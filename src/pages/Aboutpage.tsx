@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Aboutpage = () => {
   return (
@@ -17,12 +17,7 @@ const Aboutpage = () => {
           <Link to="team">Our Team</Link>
         </li>
       </ul>
-
-      {/* путь /about/contacts работать не будет */}
-      <Routes>
-        <Route path="contacts" element={<p>Our contacts</p>} />
-        <Route path="team" element={<p>Our team</p>} />
-      </Routes>
+      <Outlet />
     </div>
   );
 };

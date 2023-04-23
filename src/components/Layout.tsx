@@ -20,7 +20,6 @@ const Layout = () => {
           Blog
         </NavLink>
         <CustomLink to="/about">About</CustomLink>
-        <NavLink to="/about/1">tes</NavLink>
       </header>
       <main className="container">
         <Outlet />
