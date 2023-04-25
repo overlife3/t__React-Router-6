@@ -6,6 +6,7 @@ import {
   useSearchParams,
   defer,
   Await,
+  json,
 } from "react-router-dom";
 import BlogFilter from "../components/BlogFilter";
 
@@ -55,7 +56,7 @@ const Blogpage = () => {
 };
 
 const getPosts = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/postsss");
+  const res = await fetch("https://jsonplaceholder.typicode.com/postsss"); // ОШИБКА ЗДЕСЬ!!!
 
   if (!res.ok) {
     throw new Response("", { status: res.status, statusText: "Not found" });
@@ -65,10 +66,15 @@ const getPosts = async () => {
 };
 
 export const blogLoader: LoaderFunction = async () => {
-  //можно было и без defer. Defer нужен чтобы  разделять сущности
+  const posts = getPosts() as any;
+
+  if (!posts.length) {
+    // функция " json() "из react router dom
+    throw json({ message: "Not Found", reason: "Wrong url" }, { status: 404 });
+  }
+
   return {
-    // возвращает вместо данных промисс, который выполнится, когда выполнится запрос
-    posts: getPosts(),
+    posts,
   };
 };
 
