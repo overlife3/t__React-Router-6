@@ -56,7 +56,7 @@ const Blogpage = () => {
 };
 
 const getPosts = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/postsss"); // ОШИБКА ЗДЕСЬ!!!
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
 
   if (!res.ok) {
     throw new Response("", { status: res.status, statusText: "Not found" });
@@ -66,7 +66,7 @@ const getPosts = async () => {
 };
 
 export const blogLoader: LoaderFunction = async () => {
-  const posts = getPosts() as any;
+  const posts = (await getPosts()) as any;
 
   if (!posts.length) {
     // функция " json() "из react router dom

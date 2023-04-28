@@ -8,7 +8,7 @@ import Layout from "./components/Layout";
 import RequireAuth from "./hoc/RequireAuth";
 import Aboutpage from "./pages/Aboutpage";
 import Blogpage, { blogLoader } from "./pages/Blogpage";
-import Createpost from "./pages/Createpost";
+import Createpost, { createPostAction } from "./pages/Createpost";
 import Editpost from "./pages/Editpost";
 import Errorpage from "./pages/Errorpage";
 import Homepage from "./pages/Homepage";
@@ -41,6 +41,7 @@ const router = createBrowserRouter(
             <Createpost />
           </RequireAuth>
         }
+        action={createPostAction}
       />
       <Route path="posts/:id/edit" element={<Editpost />} />
       <Route path="login" element={<Loginpage />} />

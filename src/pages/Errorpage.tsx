@@ -4,7 +4,7 @@ import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 const Errorpage = () => {
   const error = useRouteError() as any;
 
-  // связана ли ошибка с роумингом? помогает это понять:
+  // связана ли ошибка с роутингом? помогает это понять:
   if (isRouteErrorResponse(error)) {
     return (
       <div>

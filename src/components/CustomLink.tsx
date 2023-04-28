@@ -11,7 +11,6 @@ const CustomLink: FC<Props> = ({ children, to, ...props }) => {
     path: to,
     end: false, // чтобы на вложенные пути, также делали якорь активным
   });
-  console.log(match);
 
   return (
     <Link
